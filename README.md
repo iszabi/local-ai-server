@@ -14,7 +14,7 @@ PVE Cluster built on Enterprise grade server from Dell PowerEdge family.
 | pve2 | Dell R740 | 2 x Xeon Gold 5128 2.3 GHz (24 Cores) | 1.2 TB | 8 x 3.84 TB SSDs (in RAID10)   | iDRAC 9   | 4 x 10 GbE, 2 x 25 GbE   |
 | pve3 | Dell R740 | 2 x Xeon Gold 5128 2.3 GHz (24 Cores) | 1.2 TB | 8 x 3.84 TB SSDs (in RAID10)   | iDRAC 9   | 4 x 10 GbE, 2 x 25 GbE   |
 
-<img src="doc-asset/dellr74-local-ai-server-iszabi.jpg" alt="Dell Poweredge R740 with installed 2x NVIDIA RTX A4000 GPUs">
+<img src="doc-assets/dellr74-local-ai-server-iszabi.jpg" alt="Dell Poweredge R740 with installed 2x NVIDIA RTX A4000 GPUs">
  
 - Platform - To build a virtual PVE cluster I need a suitable host or host cluster, either as physical hardware or running a hypervisor which supports nested environments. 
 I built the PVE nodes as vSphere VMs. My AI Platform currently has 3 ESXi 8.0U3 hosts managed by a vCenter instance connected to a DVS switch, but the process described should work for single hosts as well as clustered environments.
