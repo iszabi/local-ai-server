@@ -16,13 +16,19 @@ PVE Cluster built on Enterprise grade server from Dell PowerEdge family.
 
 <img src="doc-assets/dellr74-local-ai-server-iszabi.jpg" alt="Dell Poweredge R740 with installed 2x NVIDIA RTX A4000 GPUs">
  
-- Platform - To build a virtual PVE cluster I need a suitable host or host cluster, either as physical hardware or running a hypervisor which supports nested environments. 
+- **Platform** - To build a virtual PVE cluster I need a suitable host or host cluster, either as physical hardware or running a hypervisor which supports nested environments. 
 I built the PVE nodes as vSphere VMs. My AI Platform currently has 3 ESXi 8.0U3 hosts managed by a vCenter instance connected to a DVS switch, but the process described should work for single hosts as well as clustered environments.
 
-- DNS - I configured DNS entries for the PVE host servers and allocated IP addressing for these prior to deploying the VMs. 
-The iszabi.net main domain DNS and its related secure settings are managed in Cloudflare (cloudflare.com). Requested subdomains (openwebui.iszabi.net, pve.iszabi.net, poxy.iszabi.net) are redirected to my ISP Router as well. 
+<img src="doc-assets/VMware-ESXi-8.0.U3.png" alt="VMWARE ESXi 8.0 U3">
 
-- VM Networking - This is the most important one! In order for VMs running inside the PVE hosts to connect to the 'real' network I needed to setup PortGroup defined in vCenter configuration with both 'MAC Learning' and 'Forged Transmits' enabled. This is necessary so that the virtual MAC addresses assigned by PVE to VMs and containers are allowed to transit the PortGroup.
+- **DNS** - I configured two Internal DNS servers for PVE host servers and allocated IP addressing for these prior to deploying the VMs. 
+The iszabi.net main Public domain DNS and its related secure settings are managed in Cloudflare (cloudflare.com). Requested subdomains (openwebui.iszabi.net, pve.iszabi.net, poxy.iszabi.net) are redirected to my ISP Router as well. 
 
-- Storage - PVE can use existing network storage, but I configured Ceph clustered storage within the PVE environment the easiest way to do this is to add an additional 'local' disk to each PVE VM which can then be used to form a cluster across the PVE VMs deployed. Having shared storage for PVE allows fast live-migration of VMs between the virtual PVE hosts.
+<img src="doc-assets/iszabi-dot-net-cloudflare.png" alt="iszabi.net DNS entries on CloudFlare">
+
+- **VM Networking** - This is the most important one! In order for VMs running inside the PVE hosts to connect to the 'real' network I needed to setup PortGroup defined in vCenter configuration with both 'MAC Learning' and 'Forged Transmits' enabled. This is necessary so that the virtual MAC addresses assigned by PVE to VMs and containers are allowed to transit the PortGroup.
+
+<img src="doc-assets/DVS-settings-for-PVE-in-vCenter.pngg" alt="DVS settings for PVE">
+
+- **Storage** - PVE can use existing network storage, but I configured Ceph clustered storage within the PVE environment the easiest way to do this is to add an additional 'local' disk to each PVE VM which can then be used to form a cluster across the PVE VMs deployed. Having shared storage for PVE allows fast live-migration of VMs between the virtual PVE hosts.
 
