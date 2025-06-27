@@ -1,6 +1,6 @@
 ## Table of Contents
 
-- 1. [How to build a private local AI server with Proxmox, Ollama, Open WebUI for using ChatGPT?](#title-1)
+- 1 [How to build a private local AI server with Proxmox, Ollama, Open WebUI for using ChatGPT?](#title-1)
 - 1.1 [Hardware requirements overview](#1.1)
 - 1.2 [Installing WebUi and Ollama LXC](#1.2)
 - 1.3 [Subheading 3](#1.3)
