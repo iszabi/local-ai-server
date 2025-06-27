@@ -1,18 +1,18 @@
 ## Table of Contents
 
-1. [How to build a private local AI server with Proxmox, Ollama, Open WebUI for using ChatGPT?](#title-1)
-1.1 [Hardware requirements overview](#1.1)
-1.2 [Installing WebUi and Ollama LXC](#1.2)
-1.3 [Subheading 3](#1.3)
+- 1. [How to build a private local AI server with Proxmox, Ollama, Open WebUI for using ChatGPT?](#title-1)
+- 1.1 [Hardware requirements overview](#1.1)
+- 1.2 [Installing WebUi and Ollama LXC](#1.2)
+- 1.3 [Subheading 3](#1.3)
 
 <!-- headings -->
-<a id="title-1"></a>
+<a id='title-1'></a>
 # 1. How to build a private local AI server with Proxmox, Ollama, Open WebUI for using ChatGPT?
 
 Over the last few years Proxmox Virtual Environment (PVE) has been gaining a lot of interest as a way of easily managing virtual machines and container images using Open-Source software and the Linux KVM hypervisor.
 In my AI home lab I was used the latest (v8.4.1) PVE environment including advanced networking and storage inside by VMWARE ESXi-based v8.0 U3 infrastructure.
 
-<a id=1.1'/></a>
+<a id='1.1'/></a>
 ## 1.1. Hardware requirements overview
 
 PVE Cluster built on Enterprise grade server from Dell PowerEdge family.
@@ -42,5 +42,8 @@ The iszabi.net main Public domain DNS and its related secure settings are manage
 - **Storage** - PVE can use existing network storage, but I configured Ceph clustered storage within the PVE environment the easiest way to do this is to add an additional 'local' disk to each PVE VM which can then be used to form a cluster across the PVE VMs deployed. Having shared storage for PVE allows fast live-migration of VMs between the virtual PVE hosts.
 
 
-<a id=1.2'/></a>
+<a id='1.2'/></a>
 ## 1.2. Installing WebUi and Ollama LXC
+
+<a id='1.3'/></a>
+## 1.3. etting up Ollama LXC with enabling Passtrough vGPU
