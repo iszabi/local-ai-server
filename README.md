@@ -1,10 +1,18 @@
+## Table of Contents
+
+1. [How to build a private local AI server with Proxmox, Ollama, Open WebUI for using ChatGPT?](#title-1)
+1.1 [Hardware requirements overview](#hro-1)
+2. [Setting up Ollama and Open WebUI](#markdown-header-subheading-2)
+3. [Subheading 3](#markdown-header-sub-heading-3)
+
+<div id=title-1'/>
 # 1. How to build a private local AI server with Proxmox, Ollama, Open WebUI for using ChatGPT?
 
 Over the last few years Proxmox Virtual Environment (PVE) has been gaining a lot of interest as a way of easily managing virtual machines and container images using Open-Source software and the Linux KVM hypervisor.
 In my AI home lab I was used the latest (v8.4.1) PVE environment including advanced networking and storage inside by VMWARE ESXi-based v8.0 U3 infrastructure.
 
-
-# 1.1. Hardware requirements overview
+<div id=hro-1'/>
+## 1.1. Hardware requirements overview
 
 PVE Cluster built on Enterprise grade server from Dell PowerEdge family.
 
