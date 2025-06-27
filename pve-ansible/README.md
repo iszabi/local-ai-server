@@ -55,7 +55,7 @@ Update `inventory.yml` with your host(s) and link to the variables file:
 ```yaml
 all:
   hosts:
-    proxmox-host:
+    pve-host:
       ansible_host: <your_proxmox_ip>
       vars_files:
         - hosts_vars/<your_host_name>.yml

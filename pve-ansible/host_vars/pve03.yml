@@ -3,31 +3,63 @@ backup_etc: true # Backup the /etc directory in Proxmox (backup will be availabl
 reboot_system: false # Reboot the system after completing all playbooks.
 update_system_now: false # Update the system immediately after completing all playbooks.
 
-# Network configuration
+# Network configuration for PVE03
 disable_ipv6: true # Disable IPv6 on the system.
 configure_network: false # Enable custom network configuration.
 network_config: |
   auto lo
   iface lo inet loopback
 
-  iface ens192 inet manual
+  auto ens161
+  iface ens161 inet manual
+
+  auto ens192
+  iface ens192 inet static
+          address 10.20.11.103/24
+          gateway 10.20.11.1
+  #Management
+
+  auto ens193
+  iface ens193 inet static
+          address 10.20.13.103/24
+  #Storage
+
+  auto ens224
+  iface ens224 inet static
+          address 10.20.12.103/24
+  #Cluster
+
+  auto ens256
+  iface ens256 inet manual
+          address 10.20.70.103/24
+          mtu 9000
+  #VMotion
 
   auto vmbr0
   iface vmbr0 inet static
-          address 192.168.88.20/24
-          gateway 192.168.88.1
-          bridge-ports ens192
+          address 10.20.14.103/24
+          gateway 10.20.14.1
+          bridge-ports ens161
           bridge-stp off
           bridge-fd 0
+          bridge-vlan-aware yes
+          bridge-vids 2-4094
+  #For PVE VMs
+
+  auto vmbr0.14
+  iface vmbr0.14 inet manual
+  #vlan14 for PVE VMs
+
+  source /etc/network/interfaces.d/*
 
 # DNS servers          
 dns_servers:
-  - 8.8.8.8 # Primary DNS server.
-  - 8.8.4.4 # Secondary DNS server.
+  - 10.20.20.99 # Primary Internal DNS server.
+  - 10.20.20.100 # Secondary Internal DNS server.
 
 # Set hostname
-set_hostname: pve-73 # Hostname for the Proxmox server.
-set_hostname_fqdn: pve-73.contoso.local # Fully Qualified Domain Name (FQDN).
+set_hostname: pve03 # Hostname for the Proxmox server.
+set_hostname_fqdn: pve03.iszabi.lan # Fully Qualified Domain Name (FQDN).
 
 # Users configuration
 initial_user: root # Initial user for the system.
@@ -44,8 +76,8 @@ pub_keys_folder: pub_keys/ # Folder containing public SSH keys.
 # Set timezone and NTP servers
 timezone: Europe/Budapest # Set the system timezone.
 ntp_servers:
-  - 2.pfsense.pool.ntp.org # Primary NTP server.
-  - 1.pfsense.pool.ntp.org # Tertiary NTP server.
+  - 10.20.20.99 # Primary NTP server (Primary Domain Controller).
+  - 10.20.20.100 # Secondary NTP server (Secondary Domain Controller).
 
 # Repository Management
 add_backports_repo: false # Add or remove the Debian backports repository.
@@ -65,7 +97,7 @@ kernels_to_keep: 2
 
 # Kernel Parameters
 default_kernel_params: >
-  quiet pcie_aspm=off intremap=no_x2apic_optout iommu=pt
+  quiet intel_iommu=on iommu=pt nofb nomodeset video=vesafb:off,efifb:off
   pcie_acs_override=downstream,multifunction pcie_port_pm=off
   nvme_core.default_ps_max_latency_us=0
 

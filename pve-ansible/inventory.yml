@@ -1,6 +1,8 @@
 all:
   hosts:
-    192.168.88.80:
-      vars_file: host_vars/example.yml
-    192.168.88.83:
-      vars_file: host_vars/example_1.yml
+    10.20.11.101:
+      vars_file: host_vars/pve01.yml
+    10.20.11.102:
+      vars_file: host_vars/pve02.yml
+    10.20.11.103:
+      vars_file: host_vars/pve03.yml
