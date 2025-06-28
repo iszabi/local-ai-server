@@ -8,7 +8,7 @@
 
 ### Clone the repository:
 ```bash
-git clone git@github.com:iszabi/local-ai-server/pve-ansible/pve-ansible.git
+git clone git@github.com:iszabi/local-ai-server/pve-ansible.git
 cd pve-ansible
 ```
 
