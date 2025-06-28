@@ -1,5 +1,5 @@
 
-# PVE Ansible Playbook
+# PVE-Ansible Playbook
 
 ### This playbook includes a wide range of features to setup and deploy PVE with specific requirements, improving performance, security and ensure ease of use. (All up-to-date parameters can be found on 'community.general.proxmox module – Management of instances in Proxmox VE cluster': https://docs.ansible.com/ansible/latest/collections/community/general/proxmox_module.html)
 ---
@@ -9,7 +9,7 @@
 ### Clone the repository:
 ```bash
 git clone git@github.com:iszabi/local-ai-server/pve-ansible/pve-ansible.git
-cd proxmox-ansible
+cd pve-ansible
 ```
 
 ### Configure variables for your hosts:
